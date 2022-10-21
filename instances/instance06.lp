@@ -50,7 +50,7 @@ product(4, 18, litho, lithotrack_fe_95, 6, wafer, 0, 0, 0).
 product(4, 19, implant, implant_128, 5,  wafer, 0, 0, su128_3).
 product(4, 20, implant, implant_128, 11, wafer, 0, 0, su128_1).
 
-%tool(area_name, toolgrp_name, machine_number, cascading_tool, batching_tool, batch_unit, load_time, unload_time).
+%tool(area_name, toolgrp_name, machine_number, cascading_tool, load_time, unload_time).
 tool(implant, implant_128, 1, 1, 60, 60).
 tool(implant, implant_128, 2, 1, 60, 60).
 
