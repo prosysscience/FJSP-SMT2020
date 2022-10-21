@@ -5,7 +5,7 @@ wip(2,3,16,10,25,0,1638400).
 wip(1,4,16,10,25,0,1638400).
 wip(2,4,16,10,25,0,1638400).
 
-%product(product_name, step_name, area_name, toolgrp_name, pro_time, pro_unit, cascading_interval, min_batch, max_batch, setup_time, setup_name).
+%product(product_name, step_name, area_name, toolgrp_name, pro_time, pro_unit, cascading_interval, setup_time, setup_name).
 %**%
 product(3, 1,  implant, implant_128, 7,  wafer, 0, 0, 0).
 product(3, 2,  litho, lithotrack_fe_95, 6,  wafer, 0, 0, su450_3).
@@ -49,18 +49,19 @@ product(4, 18, litho, lithotrack_fe_95, 6, wafer, 0, 0, 0).
 product(4, 19, implant, implant_128, 5,  wafer, 0, 0, su128_3).
 product(4, 20, implant, implant_128, 11, wafer, 0, 0, su128_1).
 
-%tool(area_name, tool_grp_name, machine_number, cascading_tool, batching_tool, batch_unit, load_time, unload_time).
+%tool(area_name, toolgrp_name, machine_number, cascading_tool, batching_tool, load_time, unload_time).
 tool(implant, implant_128, 1, 1, 60, 60).
 tool(implant, implant_128, 2, 1, 60, 60).
 
 tool(litho, lithotrack_fe_95, 1, 1, 60, 60).
 
-%pm(pm_event_name, group_name, pm_type, max, pm_duration, min).
+%pm(pm_event_name, toolgrp_name, pm_type, max, pm_duration, min).
 pm(implant_128_mn, implant_128, counter_based, 100, 22, 75).
 pm(implant_128_qt, implant_128, counter_based, 125, 30, 125).
 pm(lithotrack_fe_95_wk, lithotrack_fe_95, time_based, 50, 23, 15).
 pm(lithotrack_fe_95_mn, lithotrack_fe_95, time_based, 55, 25, 10).
 
+%setup_change(toolgrp_name, setup_type, setup_duration, min_runs).
 setup_change(implant_128,su128_1,20,2).
 setup_change(implant_128,su128_2,15,3).
 setup_change(implant_128,su128_3,17,2).
