@@ -50,7 +50,7 @@ product(4, 20, implant, implant_128, 11, wafer, 0, 0, su128_1).
 tool(implant, implant_128, 1, 1, 60, 60).
 tool(litho, lithotrack_fe_95, 1, 1, 60, 60).
 
-%pm(pm_event_name, tool_grp_name, pm_type, max, pm_duration, min).
+%pm(pm_event_name, toolgrp_name, pm_type, max, pm_duration, min).
 pm(implant_128_mn, implant_128, counter_based, 100, 22, 75).
 pm(implant_128_qt, implant_128, counter_based, 125, 30, 125).
 pm(lithotrack_fe_95_wk, lithotrack_fe_95, time_based, 50, 23, 15).
