@@ -46,7 +46,7 @@ product(4, 18, litho, lithotrack_fe_95, 6, wafer, 0, 0, 0).
 product(4, 19, implant, implant_128, 5,  wafer, 0, 0, su128_3).
 product(4, 20, implant, implant_128, 11, wafer, 0, 0, su128_1).
 
-%tool(area_name, tool_grp_name, machine_number, cascading_tool, load_time, unload_time).
+%tool(area_name, toolgrp_name, machine_number, cascading_tool, load_time, unload_time).
 tool(implant, implant_128, 1, 1, 60, 60).
 tool(litho, lithotrack_fe_95, 1, 1, 60, 60).
 
@@ -56,7 +56,7 @@ pm(implant_128_qt, implant_128, counter_based, 125, 30, 125).
 pm(lithotrack_fe_95_wk, lithotrack_fe_95, time_based, 50, 23, 15).
 pm(lithotrack_fe_95_mn, lithotrack_fe_95, time_based, 55, 25, 10).
 
-%setup_change(tool_grp_name, setup_type, setup_duration, min_runs).
+%setup_change(toolgrp_name, setup_type, setup_duration, min_runs).
 setup_change(implant_128,su128_1,20,2).
 setup_change(implant_128,su128_2,15,3).
 setup_change(implant_128,su128_3,17,2).
