@@ -1,35 +1,42 @@
 # FJSP-SMT2020
 
-Flexible Job-shop Scheduling for Semiconductor Manufacturing with Hybrid ASP
+<!--Flexible Job-shop Scheduling for Semiconductor Manufacturing with Hybrid ASP-->
 
-This work proposes solving the semiconductor manufacturing scheduling problem using Answer Set Programming (ASP). We tested our work (in progress) with small examples derived from the SMT2020 dataset.
+This work investigates solving semiconductor manufacturing scheduling tasks using Answer Set Programming (ASP). We tested our work (in progress) with small examples derived from the SMT2020 dataset.
 
 - The following features have been considered in this work:
-   - Machine Maintenance
-   - Machine Setup
-   - Machine Assignment (Flexible/Fixed)
-- Our main objective is to minimize the total completion time.
+  - Machine Maintenance
+  - Machine Setup
+  - Machine Assignment (Flexible/Fixed)
+- Our main objective is to minimize the total completion time (makespan) of schedules.
 
-This work has been submitted in PADL 2023 (https://popl23.sigplan.org/home/PADL-2023). 
+<!---This work has been submitted to PADL 2023 (https://popl23.sigplan.org/home/PADL-2023).-->
 
-The directory consists of following files: 
+This repository includes the following files/folders:
+
 <table>
-<tr><th>File/Folder name</th><th>File description</th></tr>
-<tr><td>instances</td><td>contains the instance files tested in the paper</td></tr>
-<tr><td>encoding_mws.lp</td><td>a file contains the scheduler encoding</td></tr>
-<tr><td>README.md</td><td>text version of this file</td></tr>
+<tr><th>File/Folder</th><th>Description</th></tr>
+<tr><td><font face="courier">README.md</font></td><td>this file</td></tr>
+<tr><td><font face="courier">encoding_mws.lp</font></td><td>main scheduling encoding</td></tr>
+<tr><td><font face="courier">parsing.lp</font></td><td>auxiliary rules to reformat facts (included by <font face="courier">encoding_mws.lp</font>)</td></tr>
+<tr><td><font face="courier">machine_selection.lp</font></td><td>auxiliary rules to analyze machine groups (included by <font face="courier">encoding_mws.lp</font>)</td></tr>
+<tr><td><font face="courier">instances</font></td><td>instance files for testing</td></tr>
 </table>
 
+<!--
 ## Prerequisites
 
-* [Python3](https://www.python.org/downloads/)
-* [Clingo](https://potassco.org/clingo/)
-* [Clingo-Dl](https://potassco.org/labs/clingodl/)
-
+- [Python3](https://www.python.org/downloads/)
+ - [Clingo](https://potassco.org/clingo/)
+- [Clingo[DL]](https://potassco.org/labs/clingodl/)
+-->
 
 ## Usage
-* clingo-dl encoding_msw.lp .\instances\instance01.lp --minimize-variable=makespan --time-limit=600 --> (Fixed machine assignment)
 
-* clingo-dl encoding_msw.lp .\instances\instance01.lp --minimize-variable=makespan --time-limit=600 --const flex=1 --> (Flexible machine assignment)
+Our scheduling encoding and instances can be run with [Clingo[DL]](https://potassco.org/labs/clingodl/) as illustrated by the following example calls.
 
-* clingo-dl encoding_msw.lp .\instances\instance02.lp --minimize-variable=makespan --time-limit=600 --const flex=1 --> (Flexible machine assignment)
+- Fixed machine assignment:
+  - ``clingo-dl encoding_msw.lp instances/instance04.lp --minimize-variable=makespan --time-limit=600``
+
+- Flexible machine assignment:
+  - ``clingo-dl encoding_msw.lp instances/instance04.lp --minimize-variable=makespan --time-limit=600 --const flex=1``
