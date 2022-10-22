@@ -16,11 +16,11 @@ This repository includes the following files/folders:
 
 <table>
 <tr><th>File/Folder</th><th>Description</th></tr>
-<tr><td><font face="courier">README.md</font></td><td>this file</td></tr>
-<tr><td><font face="courier">encoding_mws.lp</font></td><td>main scheduling encoding</td></tr>
-<tr><td><font face="courier">parsing.lp</font></td><td>auxiliary rules to reformat facts (included by <font face="courier">encoding_mws.lp</font>)</td></tr>
-<tr><td><font face="courier">machine_selection.lp</font></td><td>auxiliary rules to analyze machine groups (included by <font face="courier">encoding_mws.lp</font>)</td></tr>
-<tr><td><font face="courier">instances</font></td><td>instance files for testing</td></tr>
+<tr><td>``README.md``</td><td>this file</td></tr>
+<tr><td>``encoding_mws.lp``</td><td>main scheduling encoding</td></tr>
+<tr><td>``parsing.lp``</td><td>auxiliary rules to reformat facts (included by ``encoding_mws.lp``)</td></tr>
+<tr><td>``machine_selection.lp``</td><td>auxiliary rules to analyze machine groups (included by ``encoding_mws.lp``)</td></tr>
+<tr><td>``instances``</td><td>instance files for testing</td></tr>
 </table>
 
 <!--
