@@ -5,9 +5,9 @@
 This work investigates solving semiconductor manufacturing scheduling tasks using Answer Set Programming (ASP). We tested our work (in progress) with small examples derived from the SMT2020 dataset.
 
 - The following features have been considered in this work:
-  - Machine Maintenance
-  - Machine Setup
-  - Machine Assignment (Flexible/Fixed)
+    - Machine Maintenance
+    - Machine Setup
+    - Machine Assignment (Flexible/Fixed)
 - Our main objective is to minimize the total completion time (makespan) of schedules.
 
 <!---This work has been submitted to PADL 2023 (https://popl23.sigplan.org/home/PADL-2023).-->
@@ -36,7 +36,7 @@ This repository includes the following files/folders:
 Our scheduling encoding and instances can be run with [Clingo[DL]](https://potassco.org/labs/clingodl/) as illustrated by the following example calls.
 
 - Fixed machine assignment:
-  - ``clingo-dl encoding_msw.lp instances/instance04.lp --minimize-variable=makespan --time-limit=600``
+    - ``clingo-dl encoding_msw.lp instances/instance04.lp --minimize-variable=makespan --time-limit=600``
 
 - Flexible machine assignment:
-  - ``clingo-dl encoding_msw.lp instances/instance04.lp --minimize-variable=makespan --time-limit=600 --const flex=1``
+    - ``clingo-dl encoding_msw.lp instances/instance04.lp --minimize-variable=makespan --time-limit=600 --const flex=1``
