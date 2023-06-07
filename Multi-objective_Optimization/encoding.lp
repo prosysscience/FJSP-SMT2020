@@ -111,7 +111,7 @@ change(G, O, O2) :- setup(G, S, U, M), step_order(G, O, O1), step_order(G, O1, O
 reuse(G, O, O2)  :- setup(G, S, U, M), step_order(G, O, O2),
                     O2 = (L2, P2, I2, T2, S2), 1 #count{ : S2 = 0; : S2 = S},
                     O = (L, P, I, T, S), not change(G, O, O2).
-reuse(G, O2)     :- reuse(G, O, O2).
+reuse(G, O2)     :- reuse(G, O, O2), O2 = (L, P, I, T, S), S != 0.
 equip(O, G, S)   :- setup(G, S, U, M), step_index(G, K, O),
                     O = (L, P, I, T, S), not reuse(G, O).
 
