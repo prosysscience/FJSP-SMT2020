@@ -104,16 +104,17 @@ step_order(G, O1, O2) :- main_setup(G, X, K, V), lots_order(G, O1, O2).
 step_order(G, O1, O2) :- main_setup(G, X, K, V), step_assign(G, O1, O2),
                          O1 = (L, P, I1, T1, S1), O2 = (L, P, I2, T2, S2).
 
-change(G, O, O2) :- setup(G, S, U, M), step_order(G, O, O1), step_order(G, O1, O2),
-                    O1 = (L1, P1, I1, T1, S1), S1 != 0, S1 != S,
+change(G, O, O1) :- setup(G, S, U, M), step_order(G, O, O1), O = (L, P, I, T, S),
+                    O1 = (L1, P1, I1, T1, S1), S1 != 0, S1 != S.
+ignore(G, O, O2) :- change(G, O, O1), step_order(G, O1, O2), O = (L, P, I, T, S),
                     O2 = (L2, P2, I2, T2, S2), 1 #count{ : S2 = 0; : S2 = S},
-                    O = (L, P, I, T, S), I < I2 : (L, P) = (L2, P2).
-reuse(G, O, O2)  :- setup(G, S, U, M), step_order(G, O, O2),
+                    I < I2 : (L, P) = (L2, P2).
+reuse(G, O, O2)  :- setup(G, S, U, M), step_order(G, O, O2), O = (L, P, I, T, S),
                     O2 = (L2, P2, I2, T2, S2), 1 #count{ : S2 = 0; : S2 = S},
-                    O = (L, P, I, T, S), not change(G, O, O2).
-reuse(G, O2)     :- reuse(G, O, O2), O2 = (L, P, I, T, S), S != 0.
-equip(O, G, S)   :- setup(G, S, U, M), step_index(G, K, O),
-                    O = (L, P, I, T, S), not reuse(G, O).
+                    not ignore(G, O, O2).
+reuse(G, O2)     :- reuse(G, O, O2), O2 = (L2, P2, I2, T2, S2), S2 != 0.
+equip(O, G, S)   :- setup(G, S, U, M), step_index(G, K, O), O = (L, P, I, T, S),
+                    not reuse(G, O).
 
 {maintain(O, G, H)} :- pm(G, H, E, M, N, W), step_index(G, K, O).
 :- batched(O1, O2), maintain(O1, G, H), not maintain(O2, G, H).
@@ -176,9 +177,9 @@ bound(b).
 
 #program weak.
 
-check(O, G, S) :- change(G, O, O2), O = (L, P, I, T, S), O2 = (L2, P2, I2, T2, S).
+change(G, O) :- change(G, O, O1).
 
-:~ setup(G, S, U, M), check(O, G, S), equip(O, G, S),
+:~ setup(G, S, U, M), equip(O, G, S), change(G, O),
    #count{O2 : reuse(G, O, O2), not batched(O2)} < M-1. [1@2, O]
 
 :~ step_batch(G, J, M, N, O), not batched(O),
