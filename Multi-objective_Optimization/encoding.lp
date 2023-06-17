@@ -16,9 +16,9 @@ subgroup(G, J, M1, M2) :- subgroup(G, J, M1), not subgroup(G, J, M1-1),
 % map each production operation to some subgroup of the respective tool group
 
 step_index(G, K, (L, P, I, T, S)) :- lot(L, P), route(P, I, G, T, M, N, S),
-                             K = #count{L', P', I' * lot_step : lot(L', P'),
+                             K = #count{P', L', I' * lot_step : lot(L', P'),
                                            route(P', I', G, T', M', N', S'),
-                             (L', P', I' * lot_step) < (L, P, I * lot_step)}.
+                             (P', L', I' * lot_step) < (P, L, I * lot_step)}.
 
 step_subgroup(G, K\J+1, O) :- step_index(G, K, O),
                               subgroup(G, J, _), not subgroup(G, J+1, _).
