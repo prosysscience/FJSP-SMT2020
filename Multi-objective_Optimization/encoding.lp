@@ -18,7 +18,7 @@ subgroup(G, J, M1, M2) :- subgroup(G, J, M1), not subgroup(G, J, M1-1),
 step_index(G, K, (L, P, I, T, S)) :- lot(L, P), route(P, I, G, T, M, N, S),
                              K = #count{P', L', I' * lot_step : lot(L', P'),
                                            route(P', I', G, T', M', N', S'),
-                             (P', L', I' * lot_step) < (P, L, I * lot_step)}.
+(I' * lot_step, T' * lot_step, P', L') < (I * lot_step, T * lot_step, P, L)}.
 
 step_subgroup(G, K\J+1, O) :- step_index(G, K, O),
                               subgroup(G, J, _), not subgroup(G, J+1, _).
